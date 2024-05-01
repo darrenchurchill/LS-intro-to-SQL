@@ -1,31 +1,42 @@
-# Launch School Template Repository
+# Launch School Introduction to SQL
 
-## Instructions
+These are my solutions to the exercises at the end of each chapter in the
+[_Introduction to SQL_](https://launchschool.com/books/sql/read/introduction) book.
+__Note__: The book link will only work if you're signed into your Launch School
+account.
 
-1. Create a new repository from this template.
-2. Clone the repository to your local workspace.
-3. `npm install` the template’s provided dependencies.
-4. Replace this `README`s content with your modified content from one of the
-   example `README`s.
-5. Install any additional required dependencies and set them up if needed:
+## Requirements
 
-    Ex: For Jest...
+- `postgresql`
 
-    Run:
+I installed `postgresql@16` with Homebrew.
 
-    ```console
-    npm install --save-dev jest @types/jest
-    ```
+```shell
+brew install postgresql@16
+```
 
-    And add the following section to your `package.json`:
+## Setup
 
-    ```json
-    {
-        // NOTE: "scripts" is a property of the top level object
-        "scripts": {
-            "test": "jest"
-        }
-    }
-    ```
+Clone repository, create any necessary databases with `createdb`.
 
-6. Use any of the example files’ header comments you’d like.
+## Sections
+
+### Getting Started
+
+1. SQL Basics Tutorial
+
+  ```shell
+  createdb ls_burger
+  ```
+
+  ```shell
+  psql ls_burger < ls_burger.sql
+  ```
+
+### Your First Database: Schema
+
+### Your First Database: Data
+
+### Working with Multiple Tables
+
+### Conclusion
