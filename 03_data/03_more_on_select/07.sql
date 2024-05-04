@@ -12,11 +12,7 @@
  */
 -- for encyclopedia db
 SELECT
-  max_age_years
+  max(max_age_years)
 FROM
   animals
-ORDER BY
-  max_age_years DESC
-LIMIT
-  1
 ;
