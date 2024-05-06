@@ -10,24 +10,11 @@
 -- @block
 -- @conn sql_book
 -- @label drop existing tables
--- @label drop checkouts if exists
-DROP TABLE IF EXISTS checkouts
-;
-
--- @label drop reviews if exists
-DROP TABLE IF EXISTS reviews
-;
-
--- @label drop books if exists
-DROP TABLE IF EXISTS books
-;
-
--- @label drop addresses if exists
-DROP TABLE IF EXISTS addresses
-;
-
--- @label drop users if exists
-DROP TABLE IF EXISTS users
+DROP TABLE IF EXISTS users,
+addresses,
+books,
+reviews,
+checkouts
 ;
 
 -- @block
