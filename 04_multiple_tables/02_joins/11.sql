@@ -14,15 +14,19 @@
  */
 -- @block
 -- @conn ls_burger
--- @label product names and total quantity ordered
+-- @label all products and total quantity ordered
 SELECT
+  t.product_type "type",
   p.product_name "item",
-  sum(i.quantity) "quantity ordered"
+  coalesce(sum(i.quantity), 0) "quantity ordered"
 FROM
   order_items i
-  JOIN products p ON i.product_id = p.id
+  RIGHT JOIN products p ON i.product_id = p.id
+  JOIN product_types t ON p.product_type_id = t.id
 GROUP BY
+  "type",
   item
 ORDER BY
+  "type" ASC,
   item ASC
 ;
