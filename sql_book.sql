@@ -207,3 +207,97 @@ SELECT
 FROM
   checkouts
 ;
+
+-- @block
+-- @conn sql_book
+-- @label do joins
+-- @label users (inner) join addresses
+SELECT
+  users.*,
+  addresses.*
+FROM
+  users
+  JOIN addresses ON users.id = addresses.user_id
+;
+
+-- @label users left (outer) join addresses
+SELECT
+  users.*,
+  addresses.*
+FROM
+  users
+  LEFT JOIN addresses ON users.id = addresses.user_id
+;
+
+-- @label reviews right (outer) join books
+SELECT
+  reviews.book_id,
+  reviews.content,
+  reviews.rating,
+  reviews.published_date,
+  books.id,
+  books.title,
+  books.author
+FROM
+  reviews
+  RIGHT JOIN books ON reviews.book_id = books.id
+;
+
+-- @label users cross join addresses
+-- cross joins are less common; they don't match rows, but instead return a
+-- cross-product
+SELECT
+  *
+FROM
+  users
+  CROSS JOIN addresses
+;
+
+-- @label multi join -- users join checkouts join books
+SELECT
+  users.full_name,
+  books.title,
+  checkouts.checkout_date
+FROM
+  users
+  JOIN checkouts ON users.id = checkouts.user_id
+  JOIN books ON books.id = checkouts.book_id
+;
+
+-- @block
+-- @conn sql_book
+-- @label aliasing
+-- @label table aliasing -- users join checkouts join books
+-- The `AS` in a table alias is optional
+SELECT
+  u.full_name,
+  b.title,
+  c.checkout_date
+FROM
+  users AS u
+  JOIN checkouts AS c ON u.id = c.user_id
+  JOIN books AS b ON b.id = c.book_id
+;
+
+-- @label column aliasing -- count # of checkouts
+SELECT
+  count(id) AS "Number of Books Checked Out"
+FROM
+  checkouts
+;
+
+-- @block
+-- @conn sql_book
+-- @label sub-queries
+SELECT
+  full_name
+FROM
+  users
+WHERE
+  id NOT IN (
+    SELECT
+      user_id
+    FROM
+      checkouts
+  )
+;
